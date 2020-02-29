@@ -14,7 +14,6 @@ RUN sudo apt-get -y --no-install-recommends install libraspberrypi-bin
 RUN git clone https://github.com/linappleii/linapple.git;cd linapple;make
 RUN cd linapple;make install
 
-COPY linapple.conf /etc/xdg/linapple/linapple.conf
 
 RUN rm -fr linapple
 
@@ -23,6 +22,10 @@ RUN apt-get remove -y make git g++
 RUN apt-get clean
 RUN apt-get autoremove -y --purge 
 
+COPY linapple.conf /etc/xdg/linapple/linapple.conf
+COPY lin.sh /usr/local/bin/lin.sh
+RUN chmod +x /usr/local/bin/lin.sh
+
 ENV DISPLAY :14
 
-ENTRYPOINT linapple -b&
+ENTRYPOINT /usr/local/bin/lin.sh
