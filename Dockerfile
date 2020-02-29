@@ -23,7 +23,6 @@ RUN apt-get remove -y make git g++
 RUN apt-get clean
 RUN apt-get autoremove -y --purge 
 
-ENV DISPLAY=:0
+ENV DISPLAY :14
 
-ENTRYPOINT linapple -b
-
+ENTRYPOINT linapple -b&
