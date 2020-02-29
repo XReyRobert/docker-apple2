@@ -16,5 +16,7 @@ xhost + <yourip>
 * Solution 2: Using XPra
 
 docker run -d  --name x11-bridge  -e MODE="tcp"  -e XPRA_HTML="yes"  -e DISPLAY=:14  -e XPRA_PASSWORD=111  -p 10000:10000 jare/x11-bridge
+
 export disk1="https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/games/action/pac_man/ms_pacman.dsk"
+
 docker run -d -e DISPLAY=:14 -e disk1=$disk1 --volumes-from x11-bridge linapplenew 
