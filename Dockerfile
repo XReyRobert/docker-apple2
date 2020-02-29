@@ -16,6 +16,14 @@ RUN cd linapple;make install
 
 COPY linapple.conf /etc/xdg/linapple/linapple.conf
 
+RUN rm -fr linapple
+
+RUN apt-get remove -y make git g++
+
+RUN apt-get clean
+RUN apt-get autoremove -y --purge 
+
 ENV DISPLAY=:0
 
 ENTRYPOINT linapple -b
+
